@@ -1,6 +1,6 @@
 hello.init({
   facebook : '618716354940237'
-}, {scope: 'friends,pictures' });
+}, {scope: 'friends,photos' });
 
 hello.on('auth.login', function(auth){
   app.displayLoading();
