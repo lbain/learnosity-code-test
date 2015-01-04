@@ -8,7 +8,9 @@ app.displayLoading = function () {
 app.allAlbums = function (fbArray) {
   albums = []
   for (var i = 0; i < fbArray.length; i ++ ){
-    albums.push(new Album(fbArray[i]));
+    if (fbArray[i].thumbnail){
+      albums.push(new Album(fbArray[i]));
+    }
   }
   return albums;
 };

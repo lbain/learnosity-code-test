@@ -16,7 +16,8 @@ hello.on('auth.login', function(auth){
   hello( auth.network ).api( '/me/albums' ).then( function(r){
     app.displayAlbums(r.data);
   },function(e){
-    console.log("ERROR: "+e);
+    console.log("ERROR: ");
+    console.log(e);
   });
 });
 
@@ -25,6 +26,7 @@ $(document).on('getAlbum', function (event, id) {
     app.hideAlbums();
     app.displayPictures(r.data);
   },function(e){
-    console.log("ERROR: "+e);
+    console.log("ERROR: ");
+    console.log(e);
   });
 })
