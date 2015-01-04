@@ -1,20 +1,30 @@
 hello.init({
   facebook : '618716354940237'
-},{redirect_uri:''});
+}, {scope: 'friends,pictures' });
 
-// taken from http://adodson.com/hello.js/#quick-start
 hello.on('auth.login', function(auth){
-
+  app.displayLoading();
+  app.auth = auth;
   // call user information, for the given network
   hello( auth.network ).api( '/me' ).then( function(r){
-    debugger
-    // Inject it into the container
-    var label = document.getElementById( "profile_"+ auth.network );
-    if(!label){
-      label = document.createElement('div');
-      label.id = "profile_"+auth.network;
-      document.getElementById('profile').appendChild(label);
-    }
-    label.innerHTML = '<img src="'+ r.thumbnail +'" /> Hey '+r.name;
+    $('.js-loading').hide();
+    $('.js-logged-in').show();
+    $('.js-name').text(r.name);
+    $('.js-personal-details').append("<img class='profile-pic' src='"+r.thumbnail+"'/>")
+  });
+
+  hello( auth.network ).api( '/me/albums' ).then( function(r){
+    app.displayAlbums(r.data);
+  },function(e){
+    console.log("ERROR: "+e);
   });
 });
+
+$(document).on('getAlbum', function (event, id) {
+  hello( app.auth.network ).api( '/me/album', 'get', {'id': id} ).then( function(r){
+    app.hideAlbums();
+    app.displayPictures(r.data);
+  },function(e){
+    console.log("ERROR: "+e);
+  });
+})
