@@ -6,13 +6,12 @@
     <link rel="stylesheet" type="text/css" href="/learnosity-code-test/my_code/style.css">
 </head>
 <body>
-<button onclick="post('facebook');">Post to Facebook</button>
   <div class="js-not-logged-in">
     <h1>Welcome</h1>
     <p> This app will fetch your albums from facebook and let you look at their photos.</p>
     <p> To get started please connect to Facebook by clicking the button below.</p>
 
-    <button onclick="hello( 'facebook' ).login({scope: 'friends,photos,publish,files,publish_files' })">facebook</button>
+    <button onclick="hello( 'facebook' ).login({scope: 'friends,photos,publish,files,publish_files' })">Connect to Facebook</button>
   </div>
   <div class="js-loading">
     <h1>Please wait</h1>
@@ -20,12 +19,12 @@
   </div>
   <div class="js-logged-in">
     <div class="js-personal-details">
-      <h1>Welcome <span class="js-name"></span>!</h1>
+      <h1 class="welcome">Welcome <span class="js-name"></span>!</h1>
     </div>
-    <ul class="js-albums"></ul>
+    <ul class="js-albums all-photos"></ul>
     <div class='album-view'>
-      <a href='#' class='back-album'>Back</a>
-      <ul class="js-pictures"></ul>
+      <button class="back-album">Back</button>
+      <ul class="js-pictures all-photos"></ul>
     </div>
   </div>
 
@@ -35,5 +34,6 @@
   <script class="pre" src="/learnosity-code-test/my_code/picture.js"></script>
   <script class="pre" src="/learnosity-code-test/my_code/app.js"></script>
   <script class="pre" src="/learnosity-code-test/my_code/oauth.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 </body>
 </html>
